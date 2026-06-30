@@ -1,0 +1,10 @@
+services:
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: autonomy-cloudflared
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARED_TUNNEL_TOKEN}
+    depends_on:
+      - dashboard
+      - api
+    environment:
+      CLOUDFLARED_NO_AUTOUPDATE: "true"

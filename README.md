@@ -128,6 +128,29 @@ Optional: override host ports if needed:
 ATL_DASHBOARD_PORT=8502 ATL_API_PORT=8001 docker compose up --build
 ```
 
+## Cloudflare Tunnel Deployment
+
+This project can be exposed through Cloudflare Tunnel without changing the app code.
+
+1. Create a tunnel in Cloudflare Zero Trust and copy the tunnel token.
+2. Copy `.env.example` to `.env` and fill in `CLOUDFLARED_TUNNEL_TOKEN`.
+3. Configure the hostnames in Cloudflare to route to the local compose services:
+   - Dashboard -> `http://dashboard:8501`
+   - API -> `http://api:8000`
+4. Start the stack with the tunnel override:
+
+```bash
+CLOUDFLARED_TUNNEL_TOKEN=your-tunnel-token docker compose -f docker-compose.yml -f docker-compose.cloudflare.yml up --build
+```
+
+5. Open the Cloudflare-hosted dashboard URL you mapped in Zero Trust.
+
+Notes:
+
+- The tunnel container joins the same compose network as the app services.
+- The app still uses the host-mounted `./data` directory for SQLite persistence.
+- The API can stay private and only be exposed if you explicitly route it through Cloudflare.
+
 ## Run Tests
 
 ```bash
