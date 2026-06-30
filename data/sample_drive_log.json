@@ -1,0 +1,47 @@
+[
+  {
+    "time": "2026-06-30T10:15:00Z",
+    "vehicle_speed": 20.2,
+    "steer": 0.5,
+    "acceleration": 0.3,
+    "lane": "center",
+    "distance_to_object_m": 55,
+    "stop_sign": false
+  },
+  {
+    "time": "2026-06-30T10:15:00.2Z",
+    "vehicle_speed": 20.6,
+    "steer": 4.2,
+    "acceleration": 0.7,
+    "lane": "center",
+    "distance_to_object_m": 53,
+    "stop_sign": false
+  },
+  {
+    "time": "2026-06-30T10:15:00.4Z",
+    "vehicle_speed": 20.7,
+    "steer": 10.9,
+    "acceleration": 0.1,
+    "lane": "right",
+    "distance_to_object_m": 39,
+    "stop_sign": false
+  },
+  {
+    "time": "2026-06-30T10:15:00.6Z",
+    "vehicle_speed": 20.9,
+    "steer": 7.9,
+    "acceleration": -0.2,
+    "lane": "right",
+    "distance_to_object_m": 28,
+    "stop_sign": false
+  },
+  {
+    "time": "2026-06-30T10:15:00.8Z",
+    "vehicle_speed": 21.1,
+    "steer": 0.4,
+    "acceleration": 0.3,
+    "lane": "right",
+    "distance_to_object_m": 26,
+    "stop_sign": false
+  }
+]

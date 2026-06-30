@@ -1,0 +1,31 @@
+services:
+  dashboard:
+    build: .
+    container_name: autonomy-dashboard
+    command: streamlit run streamlit_app.py --server.address=0.0.0.0 --server.port=8501
+    ports:
+      - "${ATL_DASHBOARD_PORT:-8501}:8501"
+    environment:
+      ATL_DB_PATH: /data/autonomy_test_logger.db
+      ATL_EXPORTS_DIR: /data/exports
+      ATL_REVIEWER_CODE: ${ATL_REVIEWER_CODE:-reviewer}
+    volumes:
+      - ./data:/data
+
+  api:
+    build: .
+    container_name: autonomy-api
+    command: uvicorn app.api:app --host 0.0.0.0 --port 8000
+    ports:
+      - "${ATL_API_PORT:-8001}:8000"
+    environment:
+      ATL_DB_PATH: /data/autonomy_test_logger.db
+      ATL_EXPORTS_DIR: /data/exports
+      ATL_REVIEWER_KEY: ${ATL_REVIEWER_KEY:-reviewer}
+      ATL_REVIEWER_PREVIOUS_KEY: ${ATL_REVIEWER_PREVIOUS_KEY:-}
+      ATL_REVIEWER_PREVIOUS_KEY_EXPIRES_AT: ${ATL_REVIEWER_PREVIOUS_KEY_EXPIRES_AT:-}
+      ATL_REVIEWER_INVALID_LIMIT: ${ATL_REVIEWER_INVALID_LIMIT:-20}
+      ATL_REVIEWER_INVALID_WINDOW_SECONDS: ${ATL_REVIEWER_INVALID_WINDOW_SECONDS:-300}
+      ATL_REVIEWER_LOCKOUT_SECONDS: ${ATL_REVIEWER_LOCKOUT_SECONDS:-120}
+    volumes:
+      - ./data:/data

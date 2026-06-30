@@ -1,0 +1,9 @@
+streamlit>=1.37.0
+pandas>=2.2.0
+numpy>=2.0.0
+plotly>=5.23.0
+fastapi>=0.115.0
+uvicorn>=0.30.0
+pytest>=8.3.0
+ruff>=0.5.7
+mypy>=1.11.1
