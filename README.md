@@ -151,6 +151,12 @@ Notes:
 - The app still uses the host-mounted `./data` directory for SQLite persistence.
 - The API can stay private and only be exposed if you explicitly route it through Cloudflare.
 
+Optional named-tunnel config:
+
+- Copy `cloudflared-config.example.yml` to a real Cloudflare config file if you prefer ingress rules in YAML.
+- Update the hostnames to your real Cloudflare domains, for example `dashboard.yourdomain.com` and `api.yourdomain.com`.
+- Point the tunnel at the compose services using the same internal targets: `http://dashboard:8501` and `http://api:8000`.
+
 ## Run Tests
 
 ```bash

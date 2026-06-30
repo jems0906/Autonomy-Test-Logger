@@ -1,0 +1,9 @@
+tunnel: autonomy-test-logger
+credentials-file: /etc/cloudflared/credentials.json
+
+ingress:
+  - hostname: dashboard.example.com
+    service: http://dashboard:8501
+  - hostname: api.example.com
+    service: http://api:8000
+  - service: http_status:404
